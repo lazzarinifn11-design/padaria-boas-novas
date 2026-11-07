@@ -1,0 +1,16 @@
+# Configuração do Render (Blueprint) para o site da Padaria Boas Novas.
+# Site estático: sem servidor, sem banco de dados, sem segredos.
+services:
+  - type: web
+    name: padaria-boas-novas
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
+    autoDeploy: true
+    headers:
+      - path: /fotos/*
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /img/*
+        name: Cache-Control
+        value: public, max-age=604800
